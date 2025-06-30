@@ -1,0 +1,33 @@
+version: '3.8'  # ✅ Add version for clarity and compatibility
+
+services:
+  wordpress:
+    image: bblue96/custom-wordpress:latest  # ✅ Use your custom image instead of base WordPress
+    container_name: wp-site
+    restart: always
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+
+    # 🚫 Removed this line:
+    # volumes:
+    #   - ./:/var/www/html
+    # ⛔ Mounting the local directory will override your custom image — not good after building the image
+
+  db:
+    image: mysql:5.7
+    container_name: wp-db
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./wordpress-db.sql:/docker-entrypoint-initdb.d/wordpress-db.sql
+    environment:
+      MYSQL_DATABASE: u464260987_gwebpro_new
+      MYSQL_USER: u464260987_gwebpro_new
+      MYSQL_PASSWORD: Gwebpro_new@123#$
+      MYSQL_ROOT_PASSWORD: rootpass
+
+volumes:
+  db_data:
+

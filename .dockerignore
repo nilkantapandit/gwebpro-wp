@@ -1,0 +1,9 @@
+wordpress-db.sql
+.git
+.gitignore
+.dockerignore
+README.md
+node_modules
+wp-content/uploads
+.env
+

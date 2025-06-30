@@ -1,0 +1,5 @@
+node_modules/
+wp-content/uploads/
+wordpress-db.sql
+.env
+
